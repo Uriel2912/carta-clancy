@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Ti ❤️</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div id="inicio" class="pantalla">
+
+<h1>❤️ Para la niña más especial ❤️</h1>
+
+<p class="texto">
+Te hice este detalle con todo mi corazón...
+</p>
+
+<p>
+¿Quieres verlo?
+</p>
+
+<div class="botones">
+
+<button class="si"
+onclick="mostrarCodigo()">
+Sí ❤️
+</button>
+
+<button class="no"
+id="noBtn">
+No 🙈
+</button>
+
+</div>
+
+</div>
+
+<div id="codigoScreen" class="pantalla oculto">
+
+<h2>🔒 Carta Secreta</h2>
+
+<p>Solo tú conoces el código...</p>
+
+<input
+type="password"
+id="codigo"
+placeholder="Ingresa el código">
+
+<br>
+
+<button class="si"
+onclick="verificar()">
+Abrir Carta ❤️
+</button>
+
+<p id="mensaje"></p>
+
+</div>
+
+<script>
+
+function mostrarCodigo(){
+document.getElementById("inicio").classList.add("oculto");
+document.getElementById("codigoScreen").classList.remove("oculto");
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+
+const x = Math.random() * (window.innerWidth - 120);
+const y = Math.random() * (window.innerHeight - 80);
+
+noBtn.style.position = "absolute";
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
+
+});
+
+function verificar(){
+
+let codigo =
+document.getElementById("codigo").value;
+
+if(codigo === "110326"){
+
+document.body.classList.add("fade");
+
+setTimeout(() => {
+window.location.href = "/carta";
+},1500);
+
+}
+else{
+
+document.getElementById("mensaje").innerHTML =
+"Ese no es el códigoooooo";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
